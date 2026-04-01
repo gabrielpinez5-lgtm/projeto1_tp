@@ -1,5 +1,6 @@
 import subprocess
 from SOMATORIO import Somatorio_class as S
+from PRODUTORIO import produtorio_class as P
 
 def seletor():
     subprocess.run('cls', shell=True)
@@ -18,7 +19,9 @@ def seletor():
 
 
 def func_estatistica():
+    subprocess.run('cls', shell=True)
     soma = S()
+    prod = P()
     print("a seguir voce ira inserir um arquivo txt que contenha dois valores reais por linha,\nseparados por ';'. O primeiro valor sera o numero enquanto o segundo valor seu peso, com eles, iremos calcular:\n- raiz quadratica media;\n- media aritimetica;\n- media ponderada; \n- media geometrica;\n- media harmonica. ")
     arquivo_txt = input("digite o caminho do arquivo txt: ")
     arquivo_txt = open(arquivo_txt)
@@ -26,9 +29,19 @@ def func_estatistica():
     while linha != "":
         linha = arquivo_txt.readline()
         if linha != "":
-            valor, peso = linha.strip().split(';')
+            valor, peso = (linha.strip().split(';'))
+            valor = float(valor)
+            peso = float(peso)
             soma.somar_valor_com_peso(valor, peso)
-    print(soma.media_ponderada)
+            soma.somar_valores(valor)
+            soma.somar_inversos(valor)
+            prod.multiplicar_valores(valor)
+    print(f"media aritimetica: {soma.media_aritimetica}")
+    print(f"media ponderada: {soma.media_ponderada}")
+    print(f"media harmonica: {soma.media_harmonica}")
+    print(f"media geometrica: {prod.media_geometrica}")
+    print(f"raiz quadratica media: {soma.raiz_quadratica_media}")
+    input("pressione [enter] para continuar!")
 
 
 def func_mmc():
