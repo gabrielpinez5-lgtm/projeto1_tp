@@ -54,7 +54,19 @@ def func_mdc():
     pass
 
 def func_fibonacci():
-    pass
+    numero = int(input("Insira a quantidade de numeros da sequencia de fibonnacci:\t"))
+    contador = 0
+    fibonnacci = 0
+    auxiliar2 = 0
+    auxiliar1 = 1
+    while contador < numero:
+        contador += 1
+        print(f"{contador}°: {fibonnacci}")
+        fibonnacci = auxiliar1 + auxiliar2 
+        if contador >= 2:
+            auxiliar2 = auxiliar1
+            auxiliar1 = fibonnacci
+    input("pressione [enter] para continuar")
 
 
 def principal():
