@@ -44,8 +44,15 @@ def func_estatistica():
     input("pressione [enter] para continuar!")
 
 
-def func_mmc():
-    pass
+def func_mmc(v1, v2):
+    numero_que_divide   = 2
+    divisor = 1
+    while numero_que_divide < v1 / 2 and numero_que_divide < v2 / 2:
+        if v1 % numero_que_divide == 0 or v2 % numero_que_divide == 0:
+            divisor *= numero_que_divide
+        numero_que_divide += 1
+    print(f"o mmc é {divisor}")
+
 
 def func_raiz():
     pass
@@ -76,7 +83,13 @@ def principal():
         if opcao != 0:
             match opcao:
                 case 1: func_estatistica()
-                case 2: func_mmc()
+                case 2: 
+                    repetir = 'y'
+                    while repetir != 'n':
+                        v1 = int(input("insira o primeiro valor:\t"))
+                        v2 = int(input("insira o segundo valor:\t"))
+                        func_mmc(v1, v2)
+                        repetir = input("deseja calcular o mmc de outros numeros? [y/n]:\t").lower()
                 case 3: func_raiz()
                 case 4: func_mdc()
                 case 5: func_fibonacci()
