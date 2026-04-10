@@ -1,6 +1,6 @@
 import subprocess
-from SOMATORIO import Somatorio_class as S
-from PRODUTORIO import produtorio_class as P
+from somatorio import Somatorio_class as S
+from produtorio import produtorio_class as P
 
 def seletor():
     subprocess.run('cls', shell=True)
@@ -47,18 +47,48 @@ def func_estatistica():
 def func_mmc(v1, v2):
     numero_que_divide   = 2
     divisor = 1
-    while numero_que_divide < v1 / 2 and numero_que_divide < v2 / 2:
-        if v1 % numero_que_divide == 0 or v2 % numero_que_divide == 0:
+    while numero_que_divide <= v1 or numero_que_divide <= v2:
+        if v1 % numero_que_divide == 0 and v2 % numero_que_divide == 0:
+            v1 /= numero_que_divide
+            v2 /= numero_que_divide
             divisor *= numero_que_divide
-        numero_que_divide += 1
+        else:
+            if v1 % numero_que_divide == 0:
+                v1 /= numero_que_divide
+                divisor *= numero_que_divide
+            elif v2 % numero_que_divide == 0:
+                v2 /= numero_que_divide
+                divisor *= numero_que_divide
+            else: numero_que_divide += 1
     print(f"o mmc é {divisor}")
 
+    
 
-def func_raiz():
-    pass
 
-def func_mdc():
-    pass
+def func_raiz_cubica(valor, erro):
+    palpite = 1
+    novo_valor = 0
+    while palpite - novo_valor > erro:
+        print(f"{palpite}\t{(valor/palpite**2 + 2*palpite)/3} ")
+        novo = (valor/palpite**2 + 2*palpite)/3
+    print(f"o valor é {palpite}")
+
+
+def func_mdc(v1,v2):
+    numero_que_divide   = 2
+    divisor = 1
+    while numero_que_divide <= v1 or numero_que_divide <= v2:
+        if v1 % numero_que_divide == 0 and v2 % numero_que_divide == 0:
+            v1 /= numero_que_divide
+            v2 /= numero_que_divide
+            divisor *= numero_que_divide
+        else:
+            if v1 % numero_que_divide == 0:
+                v1 /= numero_que_divide
+            elif v2 % numero_que_divide == 0:
+                v2 /= numero_que_divide
+            else: numero_que_divide += 1
+    print(f"o mdc é {divisor}")
 
 def func_fibonacci():
     numero = int(input("Insira a quantidade de numeros da sequencia de fibonnacci:\t"))
@@ -90,8 +120,20 @@ def principal():
                         v2 = int(input("insira o segundo valor:\t"))
                         func_mmc(v1, v2)
                         repetir = input("deseja calcular o mmc de outros numeros? [y/n]:\t").lower()
-                case 3: func_raiz()
-                case 4: func_mdc()
+                case 3:
+                    repetir = 'y'
+                    while repetir != 'n':
+                        v1 = int(input("digite o numero que deseje calcular a raiz cubica:\t"))
+                        v2 = float(input("digite a margem maxima de erro:\t"))
+                        func_raiz_cubica(v1,v2)
+                        repetir = input("deseja calcular o mmc de outros numeros? [y/n]:\t").lower()
+                case 4:
+                    
+                    while repetir != 'n':
+                        v1 = int(input("insira o primeiro valor:\t"))
+                        v2 = int(input("insira o segundo valor:\t"))
+                        func_mdc(v1, v2)
+                        repetir = input("deseja calcular o mmc de outros numeros? [y/n]:\t").lower()
                 case 5: func_fibonacci()
                 case _: print("insira uma opção valida\n"); input("pressione [enter] para continuar!")
     subprocess.run('cls', shell=True)  
