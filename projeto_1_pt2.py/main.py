@@ -67,28 +67,27 @@ def func_mmc(v1, v2):
 
 def func_raiz_cubica(valor, erro):
     palpite = 1
-    novo_valor = 0
-    while palpite - novo_valor > erro:
-        print(f"{palpite}\t{(valor/palpite**2 + 2*palpite)/3} ")
-        novo = (valor/palpite**2 + 2*palpite)/3
-    print(f"o valor é {palpite}")
+    novo_valor = (valor / (palpite**2) + 2 * palpite) / 3
+    while (palpite - novo_valor > erro) or (novo_valor - palpite > erro):
+        print(f"{palpite}\t{novo_valor}")
+        palpite = novo_valor
+        novo_valor = (valor / (palpite**2) + 2 * palpite) / 3
+    print(f"{palpite}\t{novo_valor}")
+    print(f"O valor é {novo_valor}")
 
 
-def func_mdc(v1,v2):
-    numero_que_divide   = 2
-    divisor = 1
-    while numero_que_divide <= v1 or numero_que_divide <= v2:
-        if v1 % numero_que_divide == 0 and v2 % numero_que_divide == 0:
-            v1 /= numero_que_divide
-            v2 /= numero_que_divide
-            divisor *= numero_que_divide
-        else:
-            if v1 % numero_que_divide == 0:
-                v1 /= numero_que_divide
-            elif v2 % numero_que_divide == 0:
-                v2 /= numero_que_divide
-            else: numero_que_divide += 1
-    print(f"o mdc é {divisor}")
+def func_mdc(v1, v2):
+        if v1 > 0 and v2 > 0:
+            novo_v1 = v1
+            novo_v2 = v2
+            mdc = 0
+            while  novo_v1 != novo_v2:
+                if novo_v1 > novo_v2:
+                    novo_v1 = novo_v1 - novo_v2
+                elif novo_v2> novo_v1:
+                    novo_v2 = novo_v2- novo_v1
+            mdc =novo_v1
+            print(f"o mdc de {v1} e {v2} é de {mdc}")
 
 def func_fibonacci():
     numero = int(input("Insira a quantidade de numeros da sequencia de fibonnacci:\t"))
