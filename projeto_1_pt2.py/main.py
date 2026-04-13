@@ -126,12 +126,17 @@ def principal():
                         func_raiz_cubica(v1,v2)
                         repetir = input("deseja calcular a raiz cubica de outros numeros? [y/n]:\t").lower()
                 case 4:
+                    subprocess.run('cls', shell=True)
                     repetir = 'y'
                     while repetir != 'n':
                         v1 = int(input("insira o primeiro valor:\t"))
                         v2 = int(input("insira o segundo valor:\t"))
-                        func_mdc(v1, v2)
-                        repetir = input("deseja calcular o mdc de outros numeros? [y/n]:\t").lower()
+                        if v1 <= 0 or v2 <= 0:
+                            print("insira apenas numeros inteiros positivos\n"); input("pressione [enter] para continuar!")
+                        else:
+                            func_mdc(v1, v2)
+                        repetir = input("deseja selecionar outros numeros? [y/n]:\t").lower()
+                        subprocess.run('cls', shell=True)
                 case 5:
                     repetir = 'y'
                     while repetir != 'n':
