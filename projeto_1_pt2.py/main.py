@@ -67,11 +67,11 @@ def func_mmc(v1, v2):
 
 def func_raiz_cubica(valor, erro):
     palpite = 1
-    novo_valor = (valor / (palpite**2) + 2 * palpite) / 3
+    novo_valor = (valor / palpite**2 + 2 * palpite) / 3
     while (palpite - novo_valor > erro) or (novo_valor - palpite > erro):
         print(f"{palpite}\t{novo_valor}")
         palpite = novo_valor
-        novo_valor = (valor / (palpite**2) + 2 * palpite) / 3
+        novo_valor = (valor / palpite**2 + 2 * palpite) / 3
     print(f"{palpite}\t{novo_valor}")
     print(f"O valor é {novo_valor}")
 
@@ -89,13 +89,12 @@ def func_mdc(v1, v2):
             mdc =novo_v1
             print(f"o mdc de {v1} e {v2} é de {mdc}")
 
-def func_fibonacci():
-    numero = int(input("Insira a quantidade de numeros da sequencia de fibonnacci:\t"))
+def func_fibonacci(qntd):
     contador = 0
     fibonnacci = 0
     auxiliar2 = 0
     auxiliar1 = 1
-    while contador < numero:
+    while contador < qntd:
         contador += 1
         print(f"{contador}°: {fibonnacci}")
         fibonnacci = auxiliar1 + auxiliar2 
@@ -127,13 +126,18 @@ def principal():
                         func_raiz_cubica(v1,v2)
                         repetir = input("deseja calcular a raiz cubica de outros numeros? [y/n]:\t").lower()
                 case 4:
-                    
+                    repetir = 'y'
                     while repetir != 'n':
                         v1 = int(input("insira o primeiro valor:\t"))
                         v2 = int(input("insira o segundo valor:\t"))
                         func_mdc(v1, v2)
                         repetir = input("deseja calcular o mdc de outros numeros? [y/n]:\t").lower()
-                case 5: func_fibonacci()
+                case 5:
+                    repetir = 'y'
+                    while repetir != 'n':
+                        numero = int(input("Insira a quantidade de numeros da sequencia de fibonnacci:\t"))
+                        func_fibonacci(numero)
+                        repetir = input("deseja calcular mais numeros de fibonacci? [y/n]:\t").lower()
                 case _: print("insira uma opção valida\n"); input("pressione [enter] para continuar!")
     subprocess.run('cls', shell=True)  
     print("saindo do programa...")
