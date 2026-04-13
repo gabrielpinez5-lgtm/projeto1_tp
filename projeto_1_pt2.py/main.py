@@ -1,6 +1,6 @@
 import subprocess
-from somatorio import Somatorio_class as S
-from produtorio import produtorio_class as P
+from SOMATORIO import Somatorio_class as S
+from PRODUTORIO import produtorio_class as P
 
 def seletor():
     subprocess.run('cls', shell=True)
@@ -125,14 +125,14 @@ def principal():
                         v1 = int(input("digite o numero que deseje calcular a raiz cubica:\t"))
                         v2 = float(input("digite a margem maxima de erro:\t"))
                         func_raiz_cubica(v1,v2)
-                        repetir = input("deseja calcular o mmc de outros numeros? [y/n]:\t").lower()
+                        repetir = input("deseja calcular a raiz cubica de outros numeros? [y/n]:\t").lower()
                 case 4:
                     
                     while repetir != 'n':
                         v1 = int(input("insira o primeiro valor:\t"))
                         v2 = int(input("insira o segundo valor:\t"))
                         func_mdc(v1, v2)
-                        repetir = input("deseja calcular o mmc de outros numeros? [y/n]:\t").lower()
+                        repetir = input("deseja calcular o mdc de outros numeros? [y/n]:\t").lower()
                 case 5: func_fibonacci()
                 case _: print("insira uma opção valida\n"); input("pressione [enter] para continuar!")
     subprocess.run('cls', shell=True)  
