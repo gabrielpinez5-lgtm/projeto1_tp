@@ -24,25 +24,36 @@ def func_estatistica():
     prod = P()
     print("a seguir voce ira inserir um arquivo txt que contenha dois valores reais por linha,\nseparados por ';'. O primeiro valor sera o numero enquanto o segundo valor seu peso, com eles, iremos calcular:\n- raiz quadratica media;\n- media aritimetica;\n- media ponderada; \n- media geometrica;\n- media harmonica. ")
     arquivo_txt = input("digite o caminho do arquivo txt: ")
-    arquivo_txt = open(arquivo_txt)
-    linha = '-'
-    while linha != "":
-        linha = arquivo_txt.readline()
-        if linha != "":
-            valor, peso = (linha.strip().split(';'))
-            valor = float(valor)
-            peso = float(peso)
-            soma.somar_valor_com_peso(valor, peso)
-            soma.somar_valores(valor)
-            soma.somar_inversos(valor)
-            prod.multiplicar_valores(valor)
-    print(f"media aritimetica: {soma.media_aritimetica}")
-    print(f"media ponderada: {soma.media_ponderada}")
-    print(f"media harmonica: {soma.media_harmonica}")
-    print(f"media geometrica: {prod.media_geometrica}")
-    print(f"raiz quadratica media: {soma.raiz_quadratica_media}")
-    input("pressione [enter] para continuar!")
+    try:
+        arquivo_txt = open(arquivo_txt)
 
+        linha = '-'
+        while linha != "":
+            linha = arquivo_txt.readline()
+            if linha != "":
+                try:
+                    valor, peso = (linha.strip().split(';'))
+                    valor = float(valor)
+                    peso = float(peso)
+                    soma.somar_valor_com_peso(valor, peso)
+                    soma.somar_valores(valor)
+                    soma.somar_inversos(valor)
+                    prod.multiplicar_valores(valor)
+                except ValueError:
+                    print(f"linha {linha}com formato invalido, pulando linha...")
+
+        arquivo_txt.close()
+
+        print(f"media aritimetica: {soma.media_aritimetica}")
+        print(f"media ponderada: {soma.media_ponderada}")
+        print(f"media harmonica: {soma.media_harmonica}")
+        print(f"media geometrica: {prod.media_geometrica}")
+        print(f"raiz quadratica media: {soma.raiz_quadratica_media}")
+        input("pressione [enter] para continuar!")
+        
+    except FileNotFoundError:
+        print("arquivo não encontrado!")
+        input("pressione [enter] para continuar!")
 
 def func_mmc(v1, v2):
     numero_que_divide   = 2
