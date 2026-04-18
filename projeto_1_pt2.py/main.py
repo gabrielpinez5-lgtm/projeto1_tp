@@ -58,20 +58,29 @@ def func_estatistica():
 def func_mmc(v1, v2):
     numero_que_divide   = 2
     divisor = 1
-    while numero_que_divide <= v1 or numero_que_divide <= v2:
-        if v1 % numero_que_divide == 0 and v2 % numero_que_divide == 0:
-            v1 /= numero_que_divide
-            v2 /= numero_que_divide
-            divisor *= numero_que_divide
+    try:
+        if v1 == 0 or v2 == 0:
+            print("o mmc é 0")
+        elif v1 == 1 or v2 == 1:
+            print(" o mmc é 1")
         else:
-            if v1 % numero_que_divide == 0:
-                v1 /= numero_que_divide
-                divisor *= numero_que_divide
-            elif v2 % numero_que_divide == 0:
-                v2 /= numero_que_divide
-                divisor *= numero_que_divide
-            else: numero_que_divide += 1
-    print(f"o mmc é {divisor}")
+            if v1 >= 0 and v2 >= 0:
+                while numero_que_divide <= v1 or numero_que_divide <= v2:
+                    if v1 % numero_que_divide == 0 and v2 % numero_que_divide == 0:
+                        v1 /= numero_que_divide
+                        v2 /= numero_que_divide
+                        divisor *= numero_que_divide
+                    else:
+                        if v1 % numero_que_divide == 0:
+                            v1 /= numero_que_divide
+                            divisor *= numero_que_divide
+                        elif v2 % numero_que_divide == 0:
+                            v2 /= numero_que_divide
+                            divisor *= numero_que_divide
+                        else: numero_que_divide += 1
+                print(f"o mmc é {divisor}")
+    except:
+        print("digite um numero")
 
     
 
@@ -125,35 +134,48 @@ def principal():
                 case 2: 
                     repetir = 'y'
                     while repetir != 'n':
-                        v1 = int(input("insira o primeiro valor:\t"))
-                        v2 = int(input("insira o segundo valor:\t"))
-                        func_mmc(v1, v2)
-                        repetir = input("deseja calcular o mmc de outros numeros? [y/n]:\t").lower()
+                        try:
+                            v1 = int(input("insira o primeiro valor:\t"))
+                            v2 = int(input("insira o segundo valor:\t"))
+                            func_mmc(v1, v2)
+                            repetir = input("deseja calcular o mmc de outros numeros? [y/n]:\t").lower()
+                        except:
+                            print("digite um valor!!!")
                 case 3:
                     repetir = 'y'
                     while repetir != 'n':
-                        v1 = int(input("digite o numero que deseje calcular a raiz cubica:\t"))
-                        v2 = float(input("digite a margem maxima de erro:\t"))
-                        func_raiz_cubica(v1,v2)
-                        repetir = input("deseja calcular a raiz cubica de outros numeros? [y/n]:\t").lower()
+                        try:
+                            v1 = int(input("digite o numero que deseje calcular a raiz cubica:\t"))
+                            v2 = float(input("digite a margem maxima de erro:\t"))
+                            func_raiz_cubica(v1,v2)
+                            repetir = input("deseja calcular a raiz cubica de outros numeros? [y/n]:\t").lower()
+                        except:
+                            print("digite um valor!!!")
                 case 4:
                     subprocess.run('cls', shell=True)
                     repetir = 'y'
                     while repetir != 'n':
-                        v1 = int(input("insira o primeiro valor:\t"))
-                        v2 = int(input("insira o segundo valor:\t"))
-                        if v1 <= 0 or v2 <= 0:
-                            print("insira apenas numeros inteiros positivos\n"); input("pressione [enter] para continuar!")
-                        else:
-                            func_mdc(v1, v2)
-                        repetir = input("deseja selecionar outros numeros? [y/n]:\t").lower()
-                        subprocess.run('cls', shell=True)
+                        try:
+                            v1 = int(input("insira o primeiro valor:\t"))
+                            v2 = int(input("insira o segundo valor:\t"))
+                            if v1 <= 0 or v2 <= 0:
+                                print("insira apenas numeros inteiros positivos\n"); input("pressione [enter] para continuar!")
+                            else:
+                                func_mdc(v1, v2)
+                            repetir = input("deseja selecionar outros numeros? [y/n]:\t").lower()
+                            subprocess.run('cls', shell=True)
+                        except:
+                            print("digite um valor!!!")
+
                 case 5:
                     repetir = 'y'
                     while repetir != 'n':
-                        numero = int(input("Insira a quantidade de numeros da sequencia de fibonnacci:\t"))
-                        func_fibonacci(numero)
-                        repetir = input("deseja calcular mais numeros de fibonacci? [y/n]:\t").lower()
+                        try:
+                            numero = int(input("Insira a quantidade de numeros da sequencia de fibonnacci:\t"))
+                            func_fibonacci(numero)
+                            repetir = input("deseja calcular mais numeros de fibonacci? [y/n]:\t").lower()
+                        except:
+                            print("digite um valor!!!")
                 case _: print("insira uma opção valida\n"); input("pressione [enter] para continuar!")
     subprocess.run('cls', shell=True)  
     print("saindo do programa...")
