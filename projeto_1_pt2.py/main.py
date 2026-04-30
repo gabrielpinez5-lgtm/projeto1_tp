@@ -2,6 +2,7 @@ import subprocess
 from SOMATORIO import Somatorio_class as S
 from PRODUTORIO import produtorio_class as P
 
+
 def seletor():
     subprocess.run('cls', shell=True)
     print("bem vindo!!")
@@ -18,6 +19,9 @@ def seletor():
 
 
 
+
+
+
 def func_estatistica():
     subprocess.run('cls', shell=True)
     soma = S()
@@ -26,6 +30,7 @@ def func_estatistica():
     arquivo_txt = input("digite o caminho do arquivo txt: ")
     try:
         arquivo_txt = open(arquivo_txt)
+
 
         linha = '-'
         while linha != "":
@@ -42,7 +47,9 @@ def func_estatistica():
                 except ValueError:
                     print(f"linha {linha}com formato invalido, pulando linha...")
 
+
         arquivo_txt.close()
+
 
         print(f"media aritimetica: {soma.media_aritimetica}")
         print(f"media ponderada: {soma.media_ponderada}")
@@ -50,10 +57,11 @@ def func_estatistica():
         print(f"media geometrica: {prod.media_geometrica}")
         print(f"raiz quadratica media: {soma.raiz_quadratica_media}")
         input("pressione [enter] para continuar!")
-        
+       
     except FileNotFoundError:
         print("arquivo não encontrado!")
         input("pressione [enter] para continuar!")
+
 
 def func_mmc(v1, v2):
     numero_que_divide   = 2
@@ -82,7 +90,10 @@ def func_mmc(v1, v2):
     except:
         print("digite um numero")
 
-    
+
+   
+
+
 
 
 def func_raiz_cubica(valor, erro):
@@ -94,6 +105,8 @@ def func_raiz_cubica(valor, erro):
         novo_valor = (valor / palpite**2 + 2 * palpite) / 3
     print(f"{palpite}\t{novo_valor}")
     print(f"O valor é {novo_valor}")
+
+
 
 
 def func_mdc(v1, v2):
@@ -109,6 +122,7 @@ def func_mdc(v1, v2):
             mdc =novo_v1
             print(f"o mdc de {v1} e {v2} é de {mdc}")
 
+
 def func_fibonacci(qntd):
     contador = 0
     fibonnacci = 0
@@ -117,13 +131,11 @@ def func_fibonacci(qntd):
     while contador < qntd:
         contador += 1
         print(f"{contador}°: {fibonnacci}")
-        fibonnacci = auxiliar1 + auxiliar2 
+        fibonnacci = auxiliar1 + auxiliar2
         if contador >= 2:
             auxiliar2 = auxiliar1
             auxiliar1 = fibonnacci
     input("pressione [enter] para continuar")
-
-
 def principal():
     opcao = -1
     while opcao != 0:
@@ -131,7 +143,7 @@ def principal():
         if opcao != 0:
             match opcao:
                 case 1: func_estatistica()
-                case 2: 
+                case 2:
                     repetir = 'y'
                     while repetir != 'n':
                         try:
@@ -166,7 +178,6 @@ def principal():
                             subprocess.run('cls', shell=True)
                         except:
                             print("digite um valor!!!")
-
                 case 5:
                     repetir = 'y'
                     while repetir != 'n':
@@ -180,6 +191,7 @@ def principal():
     subprocess.run('cls', shell=True)  
     print("saindo do programa...")
     print("até breve!")
+
 
 if __name__ == "__main__":
     principal()

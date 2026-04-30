@@ -3,6 +3,7 @@ class produtorio_class:
         self._multiplicacao = 1
         self._valor_somados = 0
 
+
     def multiplicar_valores(self, valor):
         if valor != 0:
             self._multiplicacao *= valor
